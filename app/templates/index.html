@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danish Stock Exchange - POC</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 Danish Stock Exchange</h1>
+            <p>Real-time Quotations - Proof of Concept</p>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="indexFilter">Index Name:</label>
+                <select id="indexFilter">
+                    <option value="">-- All Indices --</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="dateFilter">Date:</label>
+                <input type="date" id="dateFilter">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number" id="quoteCount">0</div>
+                    <div class="label">Quotations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="isinCount">0</div>
+                    <div class="label">ISINs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="dateCount">0</div>
+                    <div class="label">Trading Days</div>
+                </div>
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+
+            <table id="quotesTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>ISIN</th>
+                        <th>Price (DKK)</th>
+                        <th>Index</th>
+                    </tr>
+                </thead>
+                <tbody id="quotesBody">
+                    <tr class="loading">
+                        <td colspan="5">Loading data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/app.js') }}"></script>
+</body>
+</html>
